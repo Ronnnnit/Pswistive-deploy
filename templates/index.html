@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawsitive-X Prediction System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pawsitive-X <span>Prediction System</span></h1>
+        <p class="tagline">Predict the danger level of diseases with ease and accuracy!</p>
+        
+        {% if result %}
+        <div class="result-box">
+            <h2>Prediction Result</h2>
+            <p>{{ result }}</p>
+        </div>
+        {% endif %}
+        
+        <form action="/predict" method="POST" class="form-box">
+            <h2>Check Symptoms</h2>
+            {% for symptom in symptoms %}
+            <div class="form-group">
+                <label>{{ symptom }}</label>
+                <select name="{{ symptom }}">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
